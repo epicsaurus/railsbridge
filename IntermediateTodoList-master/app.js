@@ -41,6 +41,7 @@ $('#list').on('click', '.complete-button', function(event) {
 	var item = $(event.target).parent()
 	isItemCompleted = item.hasClass('completed')
 	var itemId = item.attr('data-id')
+	debugger
 	var updateRequest = $.ajax({
 		type: 'PUT',
 		url: "https://listalous.herokuapp.com/lists/Joes_List/items/" + itemId,
@@ -49,8 +50,10 @@ $('#list').on('click', '.complete-button', function(event) {
 	updateRequest.done(function(itemData) {
 	    if (itemData.completed) {
 	        item.addClass('completed')
+	        console.log("The item is completed.")
 	    } else {
 	        item.removeClass('completed')
+	        console.log("The item is not completed.")
 	    }
 	})
 })
